@@ -1,6 +1,5 @@
 import { Thelayout } from '@/components/TheLayout'
 import type { Metadata } from 'next'
-import "./globals.css"
 import { Providers } from "./provider"
 
 export const metadata: Metadata = {

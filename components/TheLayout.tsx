@@ -14,8 +14,8 @@ export const Thelayout = ({ children }: ITheLayout) => {
   return <Box h="100vh" bgColor={useColorModeValue('white.900', 'black.900')}>
     <Navigation minH={navigationHeight} />
     <Flex display={"flex"} style={{ height: `calc(100vh - ${navigationHeight})` }} alignItems={"stretch"}>
-      <Sidebar flex="3" borderRightColor={"gray.300"} borderRightWidth={1} borderRightStyle={"solid"} />
-      <Box flex="7" >
+      <Sidebar flex="22" borderRightColor={useColorModeValue('black.300', 'white.300')} borderRightWidth={1} borderRightStyle={"solid"} />
+      <Box flex="78" >
         {children}
       </Box>
     </Flex>
