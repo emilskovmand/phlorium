@@ -25,8 +25,8 @@ export const Navigation = ({ ...rest }: INavigation) => {
       <Flex alignItems={"center"} justifyContent={"center"} flex="1" >
         <SearchBar h="55px" />
       </Flex>
-      <Flex flex="1">
-
+      <Flex flex="1" alignItems={"center"} justifyContent={"flex-end"}>
+        <span>Test</span>
       </Flex>
     </Flex>
   </Flex>
