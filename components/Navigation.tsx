@@ -11,7 +11,6 @@ export const Navigation = ({ ...rest }: INavigation) => {
   return <Flex
     bg={useColorModeValue('white.900', 'black.900')}
     color={useColorModeValue('gray.600', 'white.900')}
-    minH={'87px'}
     px="2.5"
     justifyContent={"stretch"}
     borderBottomWidth={1}

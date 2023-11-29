@@ -9,7 +9,7 @@ interface ITheLayout {
 
 export const Thelayout = ({ children }: ITheLayout) => {
 
-  const navigationHeight = "86px"
+  const navigationHeight = "87px"
 
   return <Box h="100vh" bgColor={useColorModeValue('white.900', 'black.900')}>
     <Navigation minH={navigationHeight} />
