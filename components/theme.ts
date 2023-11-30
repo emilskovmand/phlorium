@@ -15,6 +15,9 @@ const colors = {
     900: '#252525',
     600: '#25252580',
     300: '#25252533'
+  },
+  blue: {
+    900: '#274CEE'
   }
 }
 
@@ -24,6 +27,98 @@ const config: ThemeConfig = {
 }
 
 const components = {
+  Link: {
+    baseStyle: {
+      fontWeight: "bold",
+      fontSize: "12px",
+      textDecorationLine: "underline",
+      _light: {
+        color: "blue.900"
+      },
+      _dark: {
+        color: "blue.900"
+      }
+    }
+  },
+  Modal: {
+    baseStyle: {
+      dialog: {
+        bgColor: "white.900",
+        alignSelf: "center",
+        borderRadius: "24px",
+        p: 16,
+        _dark: {
+          bgColor: "black.900"
+        }
+      },
+      footer: {
+        justifyContent: "stretch",
+        px: 0,
+        py: 0
+      },
+      body: {
+        mb: 5,
+        px: 0,
+      },
+      header: {
+        px: 0,
+        pt: 0,
+        pb: 6
+      }
+    }
+  },
+  Form: {
+    variants: {
+      floating: {
+        container: {
+          _focusWithin: {
+            label: {
+              transform: "translateY(-12px)"
+            },
+
+          },
+          "input:not(:placeholder-shown) + label, .chakra-select__wrapper + label, textarea:not(:placeholder-shown) ~ label": {
+            transform: "translateY(-12px)"
+          },
+          label: {
+            top: 0,
+            left: 0,
+            zIndex: 2,
+            position: "absolute",
+            pointerEvents: "none",
+            fontSize: "12px",
+            mx: 4,
+            px: 1,
+            my: 5,
+            transformOrigin: "left top",
+            _light: {
+              color: "#8083A3",
+              bgColor: "#EFEFEF4D",
+            },
+            _dark: {
+              color: "white.300",
+              bgColor: "black.300"
+            }
+          },
+          input: {
+            pt: 9,
+            pb: 5,
+            px: 5,
+            fontWeight: "bold",
+            fontSize: "12px",
+            _light: {
+              bgColor: "#EFEFEF4D",
+              color: "black.900"
+            },
+            _dark: {
+              bgColor: "black.300",
+              color: "white.900"
+            }
+          },
+        } as any
+      }
+    }
+  },
   Input: {
     variants: {
       "searchbar": {
@@ -36,8 +131,8 @@ const components = {
             bgColor: "white.300"
           }
         }
-      } as { [variant: string]: InputProps }
-    },
+      },
+    } as { [variant: string]: InputProps },
     baseStyle: {
       fontStyle: "14px",
       px: 4,
@@ -51,14 +146,18 @@ const components = {
     variants: {
       note: {
         fontSize: "12px",
-        fontWeight: "medium"
+        fontWeight: "medium",
+        color: "black.600",
+        _dark: {
+          color: "white.600"
+        }
       }
     },
     baseStyle: {
       fontSize: "14px",
-      color: "black.600",
+      color: "black.900",
       _dark: {
-        color: "white.600"
+        color: "white.900"
       }
     }
   },
@@ -73,6 +172,37 @@ const components = {
           _dark: {
             bgColor: "white.300"
           }
+        }
+      },
+      ghost: {
+        bgColor: "transparent",
+        _hover: {
+          bgColor: "transparent"
+        },
+        _active: {
+          bgColor: "transparent"
+        }
+      },
+      primary: {
+        bgColor: "brand.900",
+        color: "",
+        _light: {
+          color: "white.900"
+        },
+        _hover: {
+          bgColor: "brand.800"
+        }
+      },
+      contrast: {
+        fontWeight: "medium",
+        borderRadius: '6px',
+        _light: {
+          bgColor: 'black.900',
+          color: 'white.900'
+        },
+        _dark: {
+          bgColor: 'white.900',
+          color: 'black.900'
         }
       }
     },
