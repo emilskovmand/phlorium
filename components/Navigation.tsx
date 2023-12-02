@@ -1,5 +1,6 @@
 import { Flex, FlexProps, useColorModeValue, useDisclosure } from "@chakra-ui/react"
 import { CustomButton } from "./Button"
+import { DecalMenu } from "./DecalMenu"
 import { PhoriumIcon } from "./icons/icons"
 import { SearchBar } from "./inputs/SearchBar"
 import { SignupModal } from "./modals/Signup"
@@ -24,8 +25,9 @@ export const Navigation = ({ ...rest }: INavigation) => {
       {...rest}
     >
       <Flex columnGap={"30px"} w={"full"} justifyItems={"flex-start"}>
-        <Flex alignItems={"center"} justifyContent={"flex-start"} flex={"1"}>
+        <Flex alignItems={"center"} gap="54" justifyContent={"flex-start"} flex={"1"}>
           <PhoriumIcon h="34px" w="167px" />
+          <DecalMenu />
         </Flex>
         <Flex alignItems={"center"} justifyContent={"center"} flex="1" >
           <SearchBar h="55px" />

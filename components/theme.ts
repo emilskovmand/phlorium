@@ -1,4 +1,5 @@
-import { ComponentSingleStyleConfig, InputProps, ThemeConfig, extendTheme } from '@chakra-ui/react'
+import { menuAnatomy } from "@chakra-ui/anatomy"
+import { ComponentSingleStyleConfig, InputProps, ThemeConfig, createMultiStyleConfigHelpers, extendTheme } from '@chakra-ui/react'
 
 const colors = {
   brand: {
@@ -13,7 +14,7 @@ const colors = {
   },
   black: {
     900: '#252525',
-    600: '#25252580',
+    600: '#919191',
     300: '#25252533'
   },
   blue: {
@@ -27,6 +28,42 @@ const config: ThemeConfig = {
 }
 
 const components = {
+  Menu: {
+    baseStyle: createMultiStyleConfigHelpers(menuAnatomy.keys).definePartsStyle({
+      groupTitle: {
+        fontSize: "10px",
+        textTransform: "uppercase",
+        fontWeight: "semibold",
+        mx: "3",
+        color: "black.600",
+        _dark: {
+          color: "white.600"
+        }
+      },
+      item: {
+        bgColor: "white.900",
+        fontSize: "14px",
+        fontWeight: "medium",
+        _hover: {
+          bgColor: "black.300"
+        },
+        _dark: {
+          bgColor: "black.900",
+          _hover: {
+            bgColor: "white.300"
+          }
+        }
+      },
+      list: {
+        bgColor: "white.900",
+        color: "black.900",
+        _dark: {
+          bgColor: "black.900",
+          color: "white.900"
+        }
+      }
+    })
+  },
   Link: {
     baseStyle: {
       fontWeight: "bold",
@@ -93,11 +130,9 @@ const components = {
             transformOrigin: "left top",
             _light: {
               color: "#8083A3",
-              bgColor: "#EFEFEF4D",
             },
             _dark: {
-              color: "white.300",
-              bgColor: "black.300"
+              color: "white.300"
             }
           },
           input: {
