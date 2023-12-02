@@ -1,10 +1,7 @@
+import { HomeWrapper } from "@/components/home/HomeWrapper"
 
-export default function Home() {
+export default function Page() {
   return (
-    <main>
-      <div>
-
-      </div>
-    </main>
+    <HomeWrapper />
   )
 }
