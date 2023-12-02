@@ -52,7 +52,7 @@ const components = {
         }
       },
       footer: {
-        justifyContent: "stretch",
+        justifyContent: "flex-start",
         px: 0,
         py: 0
       },

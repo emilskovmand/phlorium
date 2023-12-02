@@ -32,7 +32,7 @@ export const Navigation = ({ ...rest }: INavigation) => {
         </Flex>
         <Flex flex="1" alignItems={"center"} justifyContent={"flex-end"}>
           <Flex gap="7" alignItems={"center"}>
-            <CustomButton p="0" h="50px" borderRadius={"24px"} justifyContent={"center"} variant={"ghost"}>Sign in</CustomButton>
+            <CustomButton linkTo="/login" p="0" h="50px" borderRadius={"24px"} justifyContent={"center"} variant={"ghost"}>Sign in</CustomButton>
             <CustomButton linkTo="/register" px="6" h="50px" borderRadius={"24px"} justifyContent={"center"} variant={"primary"}>Sign up</CustomButton>
           </Flex>
         </Flex>

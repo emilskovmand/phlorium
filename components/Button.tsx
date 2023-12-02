@@ -1,10 +1,11 @@
-import { Button, ButtonProps, Flex, Link } from "@chakra-ui/react";
+import { Button, ButtonProps, Flex, Link, LinkProps } from "@chakra-ui/react";
 import NextLink from "next/link";
 
 interface IButton extends ButtonProps {
   icon?: any,
   linkTo?: string
-  children?: any
+  children?: any,
+  linkProps?: LinkProps
 }
 
 const ButtonComponent = ({ icon, children, ...rest }: IButton) => {
@@ -16,10 +17,10 @@ const ButtonComponent = ({ icon, children, ...rest }: IButton) => {
   </Button>
 }
 
-export const CustomButton = ({ linkTo, ...rest }: IButton) => {
+export const CustomButton = ({ linkTo, linkProps, ...rest }: IButton) => {
 
   if (linkTo) {
-    return <Link href={linkTo} as={NextLink}>
+    return <Link href={linkTo} as={NextLink} {...linkProps}>
       <ButtonComponent {...rest} />
     </Link>
   }
