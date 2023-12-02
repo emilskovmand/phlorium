@@ -1,3 +1,4 @@
+import { RegisterError } from "@/components/modals/Signup"
 import { connect } from "@/lib/db"
 import userModel from "@/models/user.model"
 import bcrypt from "bcryptjs"
@@ -19,15 +20,24 @@ export const POST = async (req: NextRequest) => {
 
     // Tjekker på om det er en valid email der er blevet skrevet
     if (EmailValidator.validate(email) === false) {
-        return new Response(null, { status: 400 })
+        return new Response("email_invalid" as RegisterError, { status: 400 })
     }
 
     // Tjekker hvis user findes
-    const userExist = await userModel.exists({ $or: [{ email }, { username }] })
+    const userExist = await userModel.findOne({ $or: [{ email }, { username }] })
 
     // Hvis user findes, returner en 400
     if (userExist) {
-        return new Response(null, { status: 400 })
+        const usernameOccupied = userExist.username === username
+        const emailOccupied = userExist.email === email
+
+        if (usernameOccupied) {
+            return new Response("username_occupied" as RegisterError, { status: 400 })
+        }
+
+        if (emailOccupied) {
+            return new Response("email_occupied" as RegisterError, { status: 400 })
+        }
     }
 
     // Opretter user
@@ -42,6 +52,6 @@ export const POST = async (req: NextRequest) => {
     if (newUser) {
         return new Response(null, { status: 201 })
     } else {
-        return new Response(null, { status: 400 })
+        return new Response(null, { status: 500 })
     }
 }

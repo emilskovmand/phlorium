@@ -59,7 +59,7 @@ const handler = NextAuth({
 
             if (account?.provider === "credentials") {
                 await userModel.findByIdAndUpdate(user.id, {
-                    LastLoginDate: new Date(),
+                    lastLoginDate: new Date(),
                 })
                 authUser = true
             }
