@@ -1,14 +1,11 @@
 import { Box, Button, Input, Menu, MenuButton, MenuGroup, MenuItem, MenuList, Text } from "@chakra-ui/react"
 import { ChevronDownIcon, GlobeAltIcon } from "@heroicons/react/24/outline"
-import { useRef } from "react"
 
 
 export const DecalMenu = () => {
-  const buttonRef = useRef<HTMLButtonElement>()
 
   return <Menu matchWidth >
     <MenuButton
-      ref={buttonRef}
       as={Button}
       textAlign={"start"}
       variant={"ghost"}
