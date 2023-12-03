@@ -86,8 +86,6 @@ export const Carousel = ({ items }: ICarousel) => {
     spaceBetween={16}
     slidesPerView={4.5}
     navigation={true ? { prevEl: ".arrow-left", nextEl: ".arrow-right" } : true}
-    pagination={{ clickable: true }}
-    scrollbar={{ draggable: true }}
     breakpoints={{
       600: {
         slidesPerView: 3
