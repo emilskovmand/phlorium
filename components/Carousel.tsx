@@ -51,18 +51,25 @@ const CarouselItem = ({ imageUrl, id, title, undertitle }: ICarouselItem) => {
 const buttonStyles: ButtonProps = {
   position: "absolute",
   top: "var(--swiper-navigation-top-offset, 50%)",
-  width: "calc(var(--swiper-navigation-size) / 44 * 27)",
-  height: "var(--swiper-navigation-size)",
+  width: "40px", //"calc(var(--swiper-navigation-size) / 44 * 27)",
+  height: "40px", //"var(--swiper-navigation-size)",
   marginTop: "calc(0px - (var(--swiper-navigation-size) / 2))",
   zIndex: 10,
   cursor: "pointer",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  bgColor: "black.900",
   borderRadius: "40px",
   _hover: {
     bgColor: "black.900"
+  },
+  _light: {
+    bgColor: "black.900",
+    color: "white.900",
+  },
+  _dark: {
+    bgColor: "white.900",
+    color: "black.900",
   },
   _disabled: { display: "none" }
 }
