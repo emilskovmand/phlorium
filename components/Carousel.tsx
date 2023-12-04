@@ -91,6 +91,7 @@ export const Carousel = ({ items }: ICarousel) => {
   return <Swiper
     modules={[Navigation, A11y]}
     spaceBetween={16}
+    style={{ paddingRight: "var(--chakra-space-8)" }}
     slidesPerView={4.5}
     navigation={true ? { prevEl: ".arrow-left", nextEl: ".arrow-right" } : true}
     breakpoints={{
