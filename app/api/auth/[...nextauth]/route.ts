@@ -10,27 +10,23 @@ const handler = NextAuth({
             name: "Credentials",
             credentials: {
                 email: { label: "Email", type: "email" },
-                username: { label: "Username", type: "text" },
-                birthdate: { label: "Date of Birth", type: "date" },
                 password: { label: "Password", type: "password" },
             },
             async authorize(credentials) {
-                if (credentials?.email.length === 0 || credentials?.email.length === 0) return null
+                if (credentials?.email.length === 0 || credentials?.password.length === 0) return null
                 await connect()
-                const response = await userModel.findOne({ email: credentials?.email })
-                const user = response
-                if (response) {
+                const userDoc = await userModel.findOne({ email: credentials?.email }).select("+password")
+                if (userDoc) {
                     const auth: any = new Promise((resolve, reject) => {
-                        bcrypt.compare(credentials?.password || "", response.password, function (err, isSame) {
+                        bcrypt.compare(credentials?.password || "", userDoc.password, function (err, isSame) {
                             if (isSame) {
                                 // Info stored in session
                                 resolve({
-                                    _id: user._id,
-                                    id: user._id.toString(),
-                                    email: user.email,
-                                    username: user.username,
-                                    birthdate: user.birthdate,
-                                    CreatedTimestamp: user.CreatedTimestamp,
+                                    _id: userDoc._id,
+                                    id: userDoc._id.toString(),
+                                    email: userDoc.email,
+                                    username: userDoc.username,
+                                    createdAt: userDoc.createdAt,
                                 })
                             } else {
                                 resolve(null)
@@ -54,7 +50,7 @@ const handler = NextAuth({
             if (account) (token.user as any).provider = account.provider
             return token
         },
-        async signIn({ user, account, profile, email, credentials }) {
+        async signIn({ user, account }) {
             let authUser = false
 
             if (account?.provider === "credentials") {
@@ -66,6 +62,9 @@ const handler = NextAuth({
 
             if (authUser) return true
             else return false
+        },
+        redirect({ url, baseUrl }) {
+            return baseUrl
         },
     },
     secret: process.env.JWT_SECRET,
