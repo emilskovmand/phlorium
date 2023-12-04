@@ -1,0 +1,17 @@
+import { VStack } from "@chakra-ui/react"
+import { CustomButton } from "../Button"
+import { FormInput } from "../inputs/FormInput"
+import { QuillEditor } from "../quill/Editor"
+
+interface ISubmitForm {
+
+}
+
+export const SubmitForm = ({ }: ISubmitForm) => {
+
+  return <VStack flexDir={"column"} alignItems={"stretch"} gap="4" flex="1" minW="0">
+    <FormInput inputProps={{ placeholder: "Title" }} />
+    <QuillEditor />
+    <CustomButton px="5" py="4" w="fit-content" variant={"primary"}>Post</CustomButton>
+  </VStack>
+}

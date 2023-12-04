@@ -106,6 +106,17 @@ const components = {
   },
   Form: {
     variants: {
+      form: {
+        container: {
+          label: {
+
+          },
+          input: {
+            px: 3,
+            py: 3
+          } as InputProps
+        } as any
+      },
       floating: {
         container: {
           _focusWithin: {
