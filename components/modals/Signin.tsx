@@ -1,7 +1,8 @@
-import { Flex, Heading, Link, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, ModalProps, Text, UseDisclosureReturn } from "@chakra-ui/react"
+import { Flex, HStack, Heading, Link, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, ModalProps, Text, UseDisclosureReturn } from "@chakra-ui/react"
 import { signIn } from "next-auth/react"
 import NextLink from "next/link"
 import { useState } from "react"
+import { Auth0 } from "../Auth0"
 import { CustomButton } from "../Button"
 import { FloatingInput } from "../inputs/FloatingInput"
 
@@ -52,14 +53,17 @@ export const SigninModal = ({ disclosure, ...rest }: ISignInModal) => {
                     </Flex>
                 </ModalBody>
                 <ModalFooter>
-                    <Flex flexDir={"row"}>
-                        <CustomButton onClick={(e) => handleSignin(e)} px="7" py="6" variant={"contrast"}>
-                            Sign up
+                    <HStack>
+                        <Flex flexDir={"row"}>
+                            <CustomButton onClick={(e) => handleSignin(e)} px="7" py="6" variant={"contrast"}>
+                                Sign up
+                            </CustomButton>
+                        </Flex>
+                        <CustomButton fontSize={"12px"} fontWeight={"normal"} w="auto" ml={"auto"} variant={"ghost"}>
+                            Forgot password?
                         </CustomButton>
-                    </Flex>
-                    <CustomButton fontSize={"12px"} fontWeight={"normal"} w="auto" ml={"auto"} variant={"ghost"}>
-                        Forgot password?
-                    </CustomButton>
+                    </HStack>
+                    <Auth0 />
                 </ModalFooter>
             </ModalContent>
         </Modal>
