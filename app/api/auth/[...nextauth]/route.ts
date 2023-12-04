@@ -16,11 +16,9 @@ const handler = NextAuth({
                 if (credentials?.email.length === 0 || credentials?.password.length === 0) return null
                 await connect()
                 const userDoc = await userModel.findOne({ email: credentials?.email }).select("+password")
-                console.log("User: ", userDoc)
                 if (userDoc) {
                     const auth: any = new Promise((resolve, reject) => {
                         bcrypt.compare(credentials?.password || "", userDoc.password, function (err, isSame) {
-                            console.log("Bcrypt response:", credentials?.password, userDoc.password)
                             if (isSame) {
                                 // Info stored in session
                                 resolve({
