@@ -1,7 +1,9 @@
 import { VStack } from "@chakra-ui/react"
+import dynamic from "next/dynamic"
 import { CustomButton } from "../Button"
 import { FormInput } from "../inputs/FormInput"
-import { QuillEditor } from "../quill/Editor"
+
+const QuillEditor = dynamic(() => import('../quill/Editor'), { ssr: false })
 
 interface ISubmitForm {
 

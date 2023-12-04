@@ -1,12 +1,13 @@
+'use client'
 import { Box, useColorModeValue } from '@chakra-ui/react';
 import ReactQuill from 'react-quill';
 import './editor.css';
 
-interface QuillEditor {
+interface IQuillEditor {
   placeholder?: string
 }
 
-export const QuillEditor = ({ ...rest }: QuillEditor) => {
+const QuillEditor = ({ ...rest }: IQuillEditor) => {
 
   const className = useColorModeValue('quill-light', 'quill-dark')
 
@@ -14,3 +15,5 @@ export const QuillEditor = ({ ...rest }: QuillEditor) => {
     <ReactQuill className={className + " quill-editor"} theme="snow" {...rest} />
   </Box>
 }
+
+export default QuillEditor
