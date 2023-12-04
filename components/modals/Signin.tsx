@@ -26,6 +26,7 @@ export const SigninModal = ({ disclosure, ...rest }: ISignInModal) => {
             email: form.email,
             password: form.password,
         })
+        onClose()
         return response
     }
 
