@@ -10,12 +10,14 @@ const colors = {
   white: {
     900: '#fff',
     600: '#ffffff80',
-    300: '#ffffff33'
+    300: '#ffffff33',
+    200: '#E4E6E8',
   },
   black: {
     900: '#252525',
     600: '#919191',
-    300: '#25252533'
+    300: '#25252533',
+    200: '#1b1917',
   },
   blue: {
     900: '#274CEE'
@@ -90,6 +92,8 @@ const components = {
       },
       footer: {
         justifyContent: "flex-start",
+        flexDir: "column",
+        alignItems: "stretch",
         px: 0,
         py: 0
       },
@@ -209,6 +213,19 @@ const components = {
   },
   Button: {
     variants: {
+      transparent: {
+        borderWidth: "1px",
+        borderStyle: "solid",
+        borderColor: "white.200",
+        _dark: {
+          bgColor: "black.900",
+          borderColor: "black.200",
+        },
+        _light: {
+          bgColor: "white.900",
+          borderColor: "white.200",
+        }
+      },
       anchor: {
         fontWeight: "semibold",
         _active: {

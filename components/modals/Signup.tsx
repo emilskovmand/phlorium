@@ -2,6 +2,7 @@ import { Flex, Heading, Link, Modal, ModalBody, ModalContent, ModalFooter, Modal
 import axios from "axios"
 import NextLink from "next/link"
 import { useState } from "react"
+import { Auth0 } from "../Auth0"
 import { CustomButton } from "../Button"
 import { FloatingInput } from "../inputs/FloatingInput"
 
@@ -69,11 +70,12 @@ export const SignupModal = ({ disclosure, ...rest }: ISignUpModal) => {
           </Flex>
         </ModalBody>
         <ModalFooter>
-          <Flex flexDir={"row"}>
-            <CustomButton px="7" py="6" variant={"contrast"} onClick={() => handleSubmit()}>
+          <Flex flexDir={"row"} alignItems={"flex-start"} justifyContent={"flex-start"}>
+            <CustomButton w="fit-content" px="7" py="6" variant={"contrast"} onClick={() => handleSubmit()}>
               Sign up
             </CustomButton>
           </Flex>
+          <Auth0 />
         </ModalFooter>
       </ModalContent>
     </Modal>
