@@ -1,20 +1,29 @@
 import { Box, Flex, FlexProps, Text, useColorModeValue } from "@chakra-ui/react"
 import { BarsArrowUpIcon } from "@heroicons/react/24/outline"
-import { ArrowTrendingUpIcon } from "@heroicons/react/24/solid"
+import { ArrowLeftIcon, ArrowRightIcon, ArrowTrendingUpIcon } from "@heroicons/react/24/solid"
 import { CustomButton } from "./Button"
 
 interface ISidebar extends FlexProps {
-
+  onToggle: () => void,
+  isOpen?: boolean
 }
 
-export const Sidebar = ({ ...rest }: ISidebar) => {
+export const Sidebar = ({ onToggle, isOpen, ...rest }: ISidebar) => {
+
+  const borderColor = useColorModeValue('black.300', 'white.300')
 
   return <Flex {...rest} alignSelf={"stretch"}>
-    <Box py="5" ml="auto" width={"60%"}>
+    <Box ml="auto" width={"60%"}>
+      <Flex justifyContent={"flex-end"} px="0">
+        <CustomButton onClick={onToggle} w="18px" variant="ghost">
+          {isOpen && <ArrowLeftIcon height="20px" width="20px" />}
+          {!isOpen && <ArrowRightIcon height="20px" width="20px" />}
+        </CustomButton>
+      </Flex>
       {/* Quick navigation */}
-      <Flex
+      {isOpen && <Flex
         px="4"
-        borderColor={useColorModeValue('black.300', 'white.300')}
+        borderColor={borderColor}
         borderBottomWidth={"1px"}
         borderBottomStyle={"solid"}
         pb="3"
@@ -29,10 +38,10 @@ export const Sidebar = ({ ...rest }: ISidebar) => {
         <CustomButton variant={"anchor"} icon={<BarsArrowUpIcon height="20px" width="20px" />} >
           Newest
         </CustomButton>
-      </Flex>
+      </Flex>}
 
       {/* Recent decals */}
-      <Box>
+      {isOpen && <Box>
         <Flex
           px="4"
           py="4"
@@ -54,7 +63,7 @@ export const Sidebar = ({ ...rest }: ISidebar) => {
             decal/Tech
           </CustomButton>
         </Flex>
-      </Box>
+      </Box>}
     </Box>
   </Flex>
 }
