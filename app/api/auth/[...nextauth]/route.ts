@@ -3,6 +3,8 @@ import userModel from "@/models/user.model"
 import bcrypt from "bcryptjs"
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
+import GoogleProvider from "next-auth/providers/google"
+import HandleGoogleProvider from '../../../../lib/provider/google'
 
 const handler = NextAuth({
     providers: [
@@ -39,6 +41,11 @@ const handler = NextAuth({
                 }
             },
         }),
+
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID ?? "",
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
+        })
     ],
     callbacks: {
         async session({ session, token }) {
@@ -50,7 +57,7 @@ const handler = NextAuth({
             if (account) (token.user as any).provider = account.provider
             return token
         },
-        async signIn({ user, account }) {
+        async signIn({ user, account, profile }) {
             let authUser = false
 
             if (account?.provider === "credentials") {
@@ -58,6 +65,12 @@ const handler = NextAuth({
                     lastLoginDate: new Date(),
                 })
                 authUser = true
+            }
+
+            if (account?.provider === 'google') {
+                authUser = await HandleGoogleProvider(
+                    user.email,
+                );
             }
 
             if (authUser) return true
@@ -78,3 +91,4 @@ const handler = NextAuth({
 })
 
 export { handler as GET, handler as POST }
+
