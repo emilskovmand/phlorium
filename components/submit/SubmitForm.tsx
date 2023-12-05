@@ -24,7 +24,6 @@ export const SubmitForm = ({}: ISubmitForm) => {
         try {
             const fetch = await axios.post("/api/post/addpost", form)
         } catch (error) {
-            console.log("Failed:", error as any)
             setIsError((error as any).response.data)
         }
     }
