@@ -21,6 +21,11 @@ const postSchema = new Schema(
                 ref: "decals",
             },
         ],
+        user: {
+            type: Schema.Types.ObjectId,
+            index: true,
+            ref: "users",
+        },
     },
     {
         timestamps: true,

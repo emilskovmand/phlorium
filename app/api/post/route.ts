@@ -1,14 +1,27 @@
 import { connect } from "@/lib/db"
 import postModel from "@/models/post.model"
+import { getServerSession } from "next-auth"
 import { NextRequest } from "next/server"
+import { authOptions } from "../auth/[...nextauth]/route"
 
 interface IAddPost {
     title: string
     text: string
 }
 
+const getSession = async () => {
+    const session: any = await getServerSession(authOptions)
+    let sessionId
+    if (session && session.user._id) {
+        sessionId = session.user._id
+    }
+    return sessionId
+}
+
 export const POST = async (req: NextRequest) => {
     connect()
+
+    const session = await getSession()
 
     const { title, text } = (await req.json()) as IAddPost
 
@@ -21,6 +34,7 @@ export const POST = async (req: NextRequest) => {
     const newPost = await postModel.create({
         title,
         text,
+        user: session,
     })
 
     const savedPost = await newPost.save()
