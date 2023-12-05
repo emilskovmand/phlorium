@@ -1,5 +1,6 @@
 'use client'
 import { FormInput } from "@/components/inputs/FormInput"
+import { ImageInput } from "@/components/inputs/ImageInput"
 import { Heading, Tab, TabIndicator, TabList, TabPanel, TabPanels, Tabs, VStack, chakra } from "@chakra-ui/react"
 
 export default function Settings() {
@@ -26,6 +27,7 @@ export default function Settings() {
           <VStack>
             <FormInput inputProps={{ placeholder: "Display name" }} helperText={"This does not change your username"} label="Display name" />
             <FormInput textareaProps={{ minH: "80px", maxH: "240px", placeholder: "About" }} isTextarea helperText={"Write an about section on your profile (max characters: 300)"} label="About" />
+            <ImageInput label="Profile image" helperText={"Select an image on your computer to display as your profile picture"} />
           </VStack>
         </TabPanel>
       </TabPanels>
