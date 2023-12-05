@@ -3,9 +3,10 @@ import { BellIcon, PlusCircleIcon } from "@heroicons/react/24/outline"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
 import { CustomButton } from "./Button"
-import { DecalMenu } from "./DecalMenu"
 import { PhoriumIcon } from "./icons/icons"
 import { SearchBar } from "./inputs/SearchBar"
+import { DecalMenu } from "./menus/DecalMenu"
+import { UserMenu } from "./menus/UserMenu"
 import { SignupModal } from "./modals/Signup"
 
 interface INavigation extends FlexProps {
@@ -53,14 +54,16 @@ export const Navigation = ({ ...rest }: INavigation) => {
               <Link href="/submit">
                 <PlusCircleIcon cursor={"pointer"} height="28px" width="28px" />
               </Link>
-              <Box
-                height="40px"
-                width="40px"
-                backgroundPosition={"center"}
-                backgroundSize={"cover"}
-                bgImage={"https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80"}
-                borderRadius={"50px"}
-              />
+              <UserMenu>
+                <Box
+                  height="40px"
+                  width="40px"
+                  backgroundPosition={"center"}
+                  backgroundSize={"cover"}
+                  bgImage={"https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80"}
+                  borderRadius={"50px"}
+                />
+              </UserMenu>
             </Flex>
           </>}
         </Flex>
