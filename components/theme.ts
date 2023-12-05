@@ -170,6 +170,12 @@ const components = {
       }
     }
   },
+  Textarea: {
+    baseStyle: {
+      fontSize: "14px",
+      px: 3
+    }
+  },
   Input: {
     variants: {
       "searchbar": {
@@ -185,7 +191,7 @@ const components = {
       },
     } as { [variant: string]: InputProps },
     baseStyle: {
-      fontStyle: "14px",
+      fontSize: "14px",
       px: 4,
       color: "dark.900",
       _dark: {
