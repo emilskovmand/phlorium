@@ -13,7 +13,7 @@ export const SubmitForm = ({ }: ISubmitForm) => {
 
   return <VStack flexDir={"column"} alignItems={"stretch"} gap="4" flex="1" minW="0">
     <FormInput inputProps={{ placeholder: "Title" }} />
-    <QuillEditor />
+    <QuillEditor placeholder="Write your post here..." />
     <CustomButton px="5" py="4" w="fit-content" variant={"primary"}>Post</CustomButton>
   </VStack>
 }

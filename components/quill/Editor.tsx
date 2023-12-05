@@ -1,10 +1,10 @@
 'use client'
 import { Box, useColorModeValue } from '@chakra-ui/react';
-import ReactQuill from 'react-quill';
+import ReactQuill, { ReactQuillProps } from 'react-quill';
 import './editor.css';
 
-interface IQuillEditor {
-  placeholder?: string
+interface IQuillEditor extends ReactQuillProps {
+
 }
 
 const QuillEditor = ({ ...rest }: IQuillEditor) => {

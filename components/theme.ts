@@ -58,6 +58,7 @@ const components = {
       },
       list: {
         bgColor: "white.900",
+        zIndex: 20000,
         color: "black.900",
         _dark: {
           bgColor: "black.900",
