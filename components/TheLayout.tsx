@@ -18,7 +18,7 @@ export const Thelayout = ({ children }: ITheLayout) => {
     <Navigation minH={navigationHeight} />
     <Flex display={"flex"} style={{ height: `calc(100vh - ${navigationHeight})` }} alignItems={"stretch"}>
       <Sidebar isOpen={isSidebarOpen} onToggle={() => setIsSidebarOpen(!isSidebarOpen)} flex={isSidebarOpen ? "22" : "1"} borderRightColor={useColorModeValue('black.300', 'white.300')} borderRightWidth={1} borderRightStyle={"solid"} />
-      <Box minW={0} flex="78" >
+      <Box overflowY="auto" minW={0} flex="78" >
         {children}
       </Box>
     </Flex>
