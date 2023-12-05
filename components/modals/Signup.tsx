@@ -40,7 +40,6 @@ export const SignupModal = ({ disclosure, ...rest }: ISignUpModal) => {
             })
             onClose()
         } catch (error) {
-            console.log("Failed:", error as any)
             setIsError((error as any).response.data)
         }
     }
