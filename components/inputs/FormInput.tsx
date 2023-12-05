@@ -1,4 +1,4 @@
-import { FormControl, FormControlProps, FormErrorMessage, FormHelperText, FormLabel, Input, InputProps } from "@chakra-ui/react"
+import { FormControl, FormControlProps, FormErrorMessage, FormHelperText, FormLabel, Input, InputProps, Textarea, TextareaProps } from "@chakra-ui/react"
 import { ChangeEvent } from "react"
 
 interface IFormInput extends FormControlProps {
@@ -6,16 +6,20 @@ interface IFormInput extends FormControlProps {
   helperText?: any
   errorMessage?: any
   inputProps?: InputProps
-  onChange?: (ev: ChangeEvent<HTMLInputElement>) => void
+  textareaProps?: TextareaProps
+  isTextarea?: boolean
+  onChange?: (ev: ChangeEvent<HTMLInputElement>) => void,
+  onTextareaChange?: (ev: ChangeEvent<HTMLTextAreaElement>) => void,
 }
 
-export const FormInput = ({ onChange, label, helperText, errorMessage, inputProps, ...rest }: IFormInput) => {
+export const FormInput = ({ onChange, onTextareaChange, textareaProps, isTextarea, label, helperText, errorMessage, inputProps, ...rest }: IFormInput) => {
 
   return (
     <FormControl variant={"form"} {...rest}>
-      {label && <FormLabel>{label}</FormLabel>}
-      <Input onChange={onChange} {...inputProps} />
-      {helperText && <FormHelperText>{helperText}</FormHelperText>}
+      {label && <FormLabel mb="1">{label}</FormLabel>}
+      {helperText && <FormHelperText mb="2" mt="1">{helperText}</FormHelperText>}
+      {!isTextarea && <Input onChange={onChange} {...inputProps} />}
+      {isTextarea && <Textarea {...textareaProps} onChange={onTextareaChange} />}
       {errorMessage && <FormErrorMessage>{errorMessage}</FormErrorMessage>}
     </FormControl>
   )
