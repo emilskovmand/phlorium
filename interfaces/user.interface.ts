@@ -12,6 +12,10 @@ export interface IUser {
   profileImages?: {
     profilePicture?: Types.ObjectId | string;
   };
+  googleCredentials?: {
+    googleEmail?: string;
+    refresh_token?: string;
+  }
 }
 
-export interface IUserDoc extends IUser, Document {}
+export interface IUserDoc extends IUser, Document { }

@@ -3,6 +3,8 @@ import userModel from "@/models/user.model"
 import bcrypt from "bcryptjs"
 import NextAuth, { AuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
+import GoogleProvider from "next-auth/providers/google"
+import HandleGoogleProvider from '../../../../lib/provider/google'
 
 export const authOptions: AuthOptions = {
     providers: [
@@ -39,6 +41,11 @@ export const authOptions: AuthOptions = {
                 }
             },
         }),
+
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID ?? "",
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
+        })
     ],
     callbacks: {
         async session({ session, token }) {
@@ -50,7 +57,7 @@ export const authOptions: AuthOptions = {
             if (account) (token.user as any).provider = account.provider
             return token
         },
-        async signIn({ user, account }) {
+        async signIn({ user, account, profile }) {
             let authUser = false
 
             if (account?.provider === "credentials") {
@@ -58,6 +65,18 @@ export const authOptions: AuthOptions = {
                     lastLoginDate: new Date(),
                 })
                 authUser = true
+            }
+
+            if (account?.provider === 'google') {
+                authUser = await HandleGoogleProvider({
+                    access_token: account.access_token,
+                    email_verified: (profile as any)?.email_verified,
+                    accountId: user.id,
+                    fullName: user.name,
+                    googleEmail: user.email,
+                    imageUrl: user.image,
+                    refresh_token: account.refresh_token
+                } as any)
             }
 
             if (authUser) return true
@@ -80,3 +99,4 @@ export const authOptions: AuthOptions = {
 const handler = NextAuth(authOptions)
 
 export { handler as GET, handler as POST }
+

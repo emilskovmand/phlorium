@@ -1,9 +1,13 @@
 import { Divider, HStack, Text, VStack } from "@chakra-ui/react"
+import { signIn } from "next-auth/react"
 import { CustomButton } from "./Button"
 import { FacebookIcon, GoogleIcon } from "./icons/icons"
 
-
 export const Auth0 = () => {
+
+  const handleClick = () => {
+    signIn("google")
+  }
 
   return <VStack gap="4" mt="3" alignItems={"stretch"}>
     <HStack>
@@ -12,7 +16,7 @@ export const Auth0 = () => {
       <Divider />
     </HStack>
     <HStack gap="12">
-      <CustomButton py="6" px="3" variant="transparent" icon={<GoogleIcon />} >
+      <CustomButton py="6" px="3" variant="transparent" onClick={handleClick} icon={<GoogleIcon />} >
         Google
       </CustomButton>
       <CustomButton py="6" px="3" variant="transparent" icon={<FacebookIcon />} >
