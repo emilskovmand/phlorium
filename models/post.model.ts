@@ -13,22 +13,14 @@ const postSchema = new Schema(
         text: {
             type: String,
             required: true,
-            index: true,
         },
         decals: [
             {
-                type: String,
+                type: Schema.Types.ObjectId,
                 index: true,
+                ref: "decals",
             },
         ],
-        createdAt: {
-            type: Date,
-            default: Date.now,
-        },
-        updatedAt: {
-            type: Date,
-            default: Date.now,
-        },
     },
     {
         timestamps: true,
