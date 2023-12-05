@@ -13,7 +13,6 @@ export const FloatingInput = ({ label, helperText, inputProps, errorMessage, onC
     return (
         <FormControl variant={"floating"} {...rest}>
             <Input onChange={onChange} {...inputProps} placeholder=" " />
-
             {label && <FormLabel>{label}</FormLabel>}
             {helperText && <FormHelperText>{helperText}</FormHelperText>}
             {errorMessage && <FormErrorMessage>{errorMessage}</FormErrorMessage>}
