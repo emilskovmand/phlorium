@@ -58,6 +58,7 @@ const components = {
       },
       list: {
         bgColor: "white.900",
+        zIndex: 20000,
         color: "black.900",
         _dark: {
           bgColor: "black.900",
@@ -169,6 +170,12 @@ const components = {
       }
     }
   },
+  Textarea: {
+    baseStyle: {
+      fontSize: "14px",
+      px: 3
+    }
+  },
   Input: {
     variants: {
       "searchbar": {
@@ -184,7 +191,7 @@ const components = {
       },
     } as { [variant: string]: InputProps },
     baseStyle: {
-      fontStyle: "14px",
+      fontSize: "14px",
       px: 4,
       color: "dark.900",
       _dark: {
