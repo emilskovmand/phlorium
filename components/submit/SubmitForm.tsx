@@ -22,7 +22,7 @@ export const SubmitForm = ({}: ISubmitForm) => {
 
     const handleSubmit = async () => {
         try {
-            const fetch = await axios.post("/api/post/addpost", form)
+            const fetch = await axios.post("/api/post", form)
         } catch (error) {
             setIsError((error as any).response.data)
         }
