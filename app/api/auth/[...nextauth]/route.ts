@@ -68,9 +68,15 @@ const handler = NextAuth({
             }
 
             if (account?.provider === 'google') {
-                authUser = await HandleGoogleProvider(
-                    user.email,
-                );
+                authUser = await HandleGoogleProvider({
+                    access_token: account.access_token,
+                    email_verified: (profile as any)?.email_verified,
+                    accountId: user.id,
+                    fullName: user.name,
+                    googleEmail: user.email,
+                    imageUrl: user.image,
+                    refresh_token: account.refresh_token
+                } as any)
             }
 
             if (authUser) return true

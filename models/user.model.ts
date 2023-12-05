@@ -11,7 +11,7 @@ const userSchema = new Schema<IUserDoc>(
     },
     username: {
       type: String,
-      required: true,
+      required: false,
       unique: true,
       trim: true,
       index: true,
@@ -25,11 +25,11 @@ const userSchema = new Schema<IUserDoc>(
     },
     birthdate: {
       type: Date,
-      required: true,
+      required: false,
     },
     password: {
       type: String,
-      required: true,
+      required: false,
       trim: true,
       minlength: 8,
       select: false,
@@ -37,6 +37,17 @@ const userSchema = new Schema<IUserDoc>(
     profileImages: {
       profilePicture: {
         type: Schema.Types.ObjectId,
+        required: false,
+      },
+    },
+    googleCredentials: {
+      googleEmail: {
+        type: String,
+        required: false,
+        unique: true,
+      },
+      refresh_token: {
+        type: String,
         required: false,
       },
     },
