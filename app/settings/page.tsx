@@ -1,9 +1,12 @@
 'use client'
 import { FormInput } from "@/components/inputs/FormInput"
+import { FormSwitch } from "@/components/inputs/FormSwitch"
 import { ImageInput } from "@/components/inputs/ImageInput"
-import { Button, HStack, Heading, Tab, TabIndicator, TabList, TabPanel, TabPanels, Tabs, VStack, chakra } from "@chakra-ui/react"
+import { Button, HStack, Heading, Tab, TabIndicator, TabList, TabPanel, TabPanels, Tabs, Text, VStack, chakra, useColorMode } from "@chakra-ui/react"
 
 export default function Settings() {
+
+  const { toggleColorMode, colorMode } = useColorMode()
 
   return <chakra.main px={"8"} py="8" maxW="100%">
     <Heading fontSize="24px" mb="4">User settings</Heading>
@@ -20,7 +23,10 @@ export default function Settings() {
       />
       <TabPanels>
         <TabPanel>
-          <Heading fontSize="24px">Account settings</Heading>
+          <Heading mb="4" fontSize="24px">Account settings</Heading>
+          <VStack gap="3">
+            <FormSwitch onChange={toggleColorMode} isChecked={colorMode === "dark"} label={<Text fontSize="inherit">Color mode <Text display={"inline"} variant={"note"} fontSize="inherit">(light - dark)</Text></Text>} />
+          </VStack>
         </TabPanel>
         <TabPanel>
           <Heading mb="4" fontSize="24px">Customize profile</Heading>
