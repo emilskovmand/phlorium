@@ -41,7 +41,7 @@ export const SubmitForm = ({ }: ISubmitForm) => {
       </HStack>
       <VStack alignItems={"flex-start"} gap="1">
         <HStack>
-          <PostDecal _light={{ bgColor: "brand.700" }} _dark={{ bgColor: "whiteAlpha.300" }} decal="coding" />
+          <PostDecal decal="coding" />
         </HStack>
         <Text display={"inline"} variant="note">(provide at least 1 decal)</Text>
       </VStack>
