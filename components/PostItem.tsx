@@ -24,9 +24,16 @@ export const PostItem = ({ title, text, user }: IPost) => {
     _dark={{ bgColor: "whiteAlpha.200" }}
     justifyContent={"flex-start"}
   >
-    <Box>
+    <HStack>
+      <Box
+        boxSize="20px"
+        backgroundPosition={"center"}
+        backgroundSize={"cover"}
+        bgImage={"https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80"}
+        borderRadius={"50px"}
+      />
       <Text>{postedBy.username} &#x2022; 1 min ago</Text>
-    </Box>
+    </HStack>
     <Box py="4" maxH="100px">
       <Heading fontSize="28px" fontWeight={"medium"} mb="2">{title}</Heading>
       <Text fontSize="14px" noOfLines={2}>{text}</Text>
