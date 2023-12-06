@@ -34,7 +34,7 @@ export const SubmitForm = ({ }: ISubmitForm) => {
 
   return (
     <VStack flexDir={"column"} alignItems={"stretch"} gap="4" flex="1" minW="0">
-      <FormInput errorMessage={titleMissingError} isInvalid={!!titleMissingError} inputProps={{ placeholder: "Title", name: "title" }} onChange={(ev) => setForm({ ...form, title: ev.target.value })} />
+      <FormInput errorMessage={titleMissingError} isInvalid={!!titleMissingError} inputProps={{ fontSize: "16px", placeholder: "Title", name: "title" }} onChange={(ev) => setForm({ ...form, title: ev.target.value })} />
       <QuillEditor errorMessage={textMissingError} defaultValue={form.text} onChange={(v) => setForm({ ...form, text: v })} />
       <HStack gap="0px">
         <Text fontSize={"14px"}>decal/</Text><FormInput w="120px" inputProps={{ fontSize: "12px" }} />
