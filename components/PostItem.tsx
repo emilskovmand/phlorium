@@ -1,10 +1,14 @@
 import { IPost } from "@/interfaces/post.interface";
 import { IUser } from "@/interfaces/user.interface";
-import { Box, HStack, Heading, Text, VStack } from "@chakra-ui/react";
+import { Box, BoxProps, HStack, Heading, Text, VStack } from "@chakra-ui/react";
 
-const PostDecal = ({ decal }: { decal?: string }) => {
+interface IPostDecal extends BoxProps {
+  decal?: string
+}
 
-  return <Box px="2" py="1" borderRadius={"12px"} bgColor="white.900" _dark={{ bgColor: "black.300" }}>
+export const PostDecal = ({ decal, ...rest }: IPostDecal) => {
+
+  return <Box px="2" py="1" fontSize={"12px"} borderRadius={"12px"} bgColor="white.900" _dark={{ bgColor: "black.300" }}  {...rest}>
     decal/{decal}
   </Box>
 }
