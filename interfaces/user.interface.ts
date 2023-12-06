@@ -16,6 +16,12 @@ export interface IUser {
     googleEmail?: string;
     refresh_token?: string;
   }
+  settings?: {
+    displayname?: string;
+    about?: string;
+    colormode?: string;
+  }
+
 }
 
 export interface IUserDoc extends IUser, Document { }

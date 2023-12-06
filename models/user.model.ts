@@ -51,6 +51,20 @@ const userSchema = new Schema<IUserDoc>(
         required: false,
       },
     },
+    settings: {
+      displayname: {
+        type: String,
+        required: false,
+      },
+      about: {
+        type: String,
+        required: false,
+      },
+      colormode: {
+        type: String,
+        required: false,
+      }
+    }
   },
   {
     timestamps: true,
