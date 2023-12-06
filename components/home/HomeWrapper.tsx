@@ -19,7 +19,7 @@ export const HomeWrapper = () => {
     <Box mt="5" mb="6">
       <Carousel items={items} />
     </Box>
-    <HStack>
+    <HStack alignItems={"flex-start"}>
       <Postlist flex="4" list={[{ decals: [], text: "Hejsa texten", title: "Titlen", user: ({ username: "Username", email: "username@gmail.com", _id: "" } as IUser) }]} />
       <Box flex="3">
         Test
