@@ -18,8 +18,8 @@ export const FormInput = ({ onChange, onTextareaChange, textareaProps, isTextare
     <FormControl variant={"form"} {...rest}>
       {label && <FormLabel mb="1">{label}</FormLabel>}
       {helperText && <FormHelperText mb="2" mt="1">{helperText}</FormHelperText>}
-      {!isTextarea && <Input onChange={onChange} {...inputProps} />}
-      {isTextarea && <Textarea {...textareaProps} onChange={onTextareaChange} />}
+      {!isTextarea && <Input fontSize="14px" onChange={onChange} {...inputProps} />}
+      {isTextarea && <Textarea fontSize={"14px"} {...textareaProps} onChange={onTextareaChange} />}
       {errorMessage && <FormErrorMessage>{errorMessage}</FormErrorMessage>}
     </FormControl>
   )

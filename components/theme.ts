@@ -182,6 +182,9 @@ const components = {
             _dark: {
               bgColor: "black.300",
               color: "white.900"
+            },
+            _focus: {
+              boxShadow: "0px 0px"
             }
           },
         } as any
@@ -214,6 +217,9 @@ const components = {
       color: "dark.900",
       _dark: {
         color: "white.900"
+      },
+      _focus: {
+        boxShadow: "0px 0px 0px"
       }
     }
   },
