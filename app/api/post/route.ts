@@ -1,5 +1,7 @@
+import { IPostFilter } from "@/interfaces/post.interface"
 import { connect } from "@/lib/db"
 import postModel from "@/models/post.model"
+import { NextApiRequest } from "next"
 import { getServerSession } from "next-auth"
 import { NextRequest } from "next/server"
 import { authOptions } from "../auth/[...nextauth]/route"
@@ -44,4 +46,18 @@ export const POST = async (req: NextRequest) => {
     } else {
         return new Response("Post could not be created", { status: 500 })
     }
+}
+
+export const GET = async (req: NextApiRequest) => {
+    await connect()
+
+    const { page } = req.query as IPostFilter
+
+    const post = await postModel
+    .find()
+    .skip((page || 1 - 1) * 10)
+    .limit(10)
+
+    return Response.json({ post })
+
 }

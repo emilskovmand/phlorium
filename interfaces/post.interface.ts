@@ -12,4 +12,12 @@ export interface IPost {
   updatedAt?: Date
 }
 
-export interface IPostDoc extends IPost, Document { }
+export interface IPostDoc extends IPost, Document {}
+
+export interface IPostFilter {
+    title?: string
+    username?: string
+    userId?: string
+    decals?: string[]
+    page?: number
+}
