@@ -25,7 +25,11 @@ export default function Settings() {
         <TabPanel>
           <Heading mb="4" fontSize="24px">Account settings</Heading>
           <VStack gap="3">
-            <FormSwitch onChange={toggleColorMode} isChecked={colorMode === "dark"} label={<Text fontSize="inherit">Color mode <Text display={"inline"} variant={"note"} fontSize="inherit">(light - dark)</Text></Text>} />
+            <FormSwitch
+              onChange={toggleColorMode}
+              isChecked={colorMode === "dark"}
+              label={<Text fontSize="inherit">Color mode <Text display={"inline"} variant={"note"} fontSize="inherit">(light - dark)</Text></Text>}
+            />
           </VStack>
         </TabPanel>
         <TabPanel>

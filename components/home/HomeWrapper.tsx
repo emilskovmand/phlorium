@@ -1,6 +1,8 @@
 'use client'
-import { Box, chakra } from "@chakra-ui/react"
+import { IUser } from "@/interfaces/user.interface"
+import { Box, HStack, chakra } from "@chakra-ui/react"
 import { Carousel, ICarouselItem } from "../Carousel"
+import { Postlist } from "../PostList"
 import { Welcome } from "./Welcome"
 
 const items: ICarouselItem[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((v) => ({
@@ -17,5 +19,11 @@ export const HomeWrapper = () => {
     <Box mt="5" mb="6">
       <Carousel items={items} />
     </Box>
+    <HStack>
+      <Postlist flex="4" list={[{ decals: [], text: "Hejsa texten", title: "Titlen", user: ({ username: "Username", email: "username@gmail.com", _id: "" } as IUser) }]} />
+      <Box flex="3">
+        Test
+      </Box>
+    </HStack>
   </chakra.main>
 }

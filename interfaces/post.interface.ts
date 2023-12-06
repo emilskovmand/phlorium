@@ -1,13 +1,15 @@
 import { Document, Types } from "mongoose"
-import { IUserDoc } from "./user.interface"
+import { IUser } from "./user.interface"
 
-interface IPost extends Document {
-    title: string
-    text: string
-    decals: string[]
-    user?: string | IUserDoc | Types.ObjectId
-    createdAt?: Date
-    updatedAt?: Date
+export interface IPost {
+  _id?: any
+  id?: any,
+  title: string
+  text: string
+  decals: string[]
+  user?: string | IUser | Types.ObjectId
+  createdAt?: Date
+  updatedAt?: Date
 }
 
-export interface IPostDoc extends IPost, Document {}
+export interface IPostDoc extends IPost, Document { }
