@@ -1,7 +1,7 @@
 'use client'
 import { FormInput } from "@/components/inputs/FormInput"
 import { ImageInput } from "@/components/inputs/ImageInput"
-import { Heading, Tab, TabIndicator, TabList, TabPanel, TabPanels, Tabs, VStack, chakra } from "@chakra-ui/react"
+import { Button, HStack, Heading, Tab, TabIndicator, TabList, TabPanel, TabPanels, Tabs, VStack, chakra } from "@chakra-ui/react"
 
 export default function Settings() {
 
@@ -32,5 +32,13 @@ export default function Settings() {
         </TabPanel>
       </TabPanels>
     </Tabs>
+    <HStack mt="4" gap="3" mx="4">
+      <Button w="fit-content" px="5" py="5">
+        Cancel
+      </Button>
+      <Button w="fit-content" px="5" py="5" variant="primary">
+        Save
+      </Button>
+    </HStack>
   </chakra.main>
 }
