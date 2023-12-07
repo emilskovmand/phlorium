@@ -13,7 +13,7 @@ export const Sidebar = ({ onToggle, isOpen, ...rest }: ISidebar) => {
   const borderColor = useColorModeValue('black.300', 'white.300')
 
   return <Flex {...rest} alignSelf={"stretch"}>
-    <Box ml="auto" width={"60%"}>
+    <Box ml="auto" width={["100%", "100%", "80%", "60%"]}>
       <Flex justifyContent={"flex-end"} px="0">
         <CustomButton onClick={onToggle} w="18px" variant="ghost">
           {isOpen && <ArrowLeftIcon height="20px" width="20px" />}

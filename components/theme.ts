@@ -1,5 +1,6 @@
 import { menuAnatomy } from "@chakra-ui/anatomy"
 import { ComponentSingleStyleConfig, InputProps, ThemeConfig, createMultiStyleConfigHelpers, extendTheme } from '@chakra-ui/react'
+import { Manrope } from "next/font/google"
 
 const colors = {
   brand: {
@@ -29,7 +30,24 @@ const config: ThemeConfig = {
   initialColorMode: "system"
 }
 
+const manrope = Manrope({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ["400", "500", "600", "700", "800"]
+})
+
+const fonts = {
+  manrope: manrope.style.fontFamily,
+  body: manrope.style.fontFamily
+}
+
+
 const components = {
+  Heading: {
+    baseStyle: {
+      fontFamily: "manrope"
+    }
+  },
   Menu: {
     baseStyle: createMultiStyleConfigHelpers(menuAnatomy.keys).definePartsStyle({
       groupTitle: {
@@ -164,6 +182,9 @@ const components = {
             _dark: {
               bgColor: "black.300",
               color: "white.900"
+            },
+            _focus: {
+              boxShadow: "0px 0px"
             }
           },
         } as any
@@ -215,7 +236,8 @@ const components = {
       color: "black.900",
       _dark: {
         color: "white.900"
-      }
+      },
+      fontFamily: "manrope"
     }
   },
   Button: {
@@ -291,4 +313,4 @@ const components = {
   }
 } as { [comp: string]: ComponentSingleStyleConfig }
 
-export const theme = extendTheme({ colors, config, components })
+export const theme = extendTheme({ colors, config, components, fonts })
