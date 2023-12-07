@@ -2,9 +2,17 @@
 import { FormInput } from "@/components/inputs/FormInput"
 import { FormSwitch } from "@/components/inputs/FormSwitch"
 import { ImageInput } from "@/components/inputs/ImageInput"
+import { IUser } from "@/interfaces/user.interface"
 import { Button, HStack, Heading, Tab, TabIndicator, TabList, TabPanel, TabPanels, Tabs, Text, VStack, chakra, useColorMode } from "@chakra-ui/react"
+import { useState } from "react"
+
+export interface ISettingsForm extends Partial<IUser>{
+ 
+}
 
 export default function Settings() {
+
+  const [form, setForm] = useState<ISettingsForm>({})
 
   const { toggleColorMode, colorMode } = useColorMode()
 

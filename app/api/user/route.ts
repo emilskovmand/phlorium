@@ -10,7 +10,7 @@ interface IHandleSettings {
     profilePicture?: Types.ObjectId | string;
 }
 
-async function HandleSettings({ id, displayname, about, colormode, profilePicture }: IHandleSettings) {
+async function HandleSettings({ id, displayname, about, colormode }: IHandleSettings) {
     const db = await connect();
 
     try {
@@ -21,7 +21,6 @@ async function HandleSettings({ id, displayname, about, colormode, profilePictur
                     displayname,
                     about,
                     colormode,
-                    profilePicture,
                 },
             },
             { new: true }
