@@ -48,14 +48,18 @@ export const POST = async (req: NextRequest) => {
     }
 }
 
-export const GET = async (req: NextApiRequest) => {
+export const GET = async (req: NextRequest) => {
     await connect()
 
-    const { page } = req.query as IPostFilter
+    const username = req.nextUrl.searchParams.get("username")
+    const title = req.nextUrl.searchParams.get("title")
+    const userId = req.nextUrl.searchParams.get("userId")
+    const decals = req.nextUrl.searchParams.get("decals")
+    const page = req.nextUrl.searchParams.get("page")
 
     const post = await postModel
     .find()
-    .skip((page || 1 - 1) * 10)
+    .skip((page - 1) * 10)
     .limit(10)
 
     return Response.json({ post })
