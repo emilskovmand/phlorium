@@ -6,8 +6,8 @@ import { IUser } from "@/interfaces/user.interface"
 import { Button, HStack, Heading, Tab, TabIndicator, TabList, TabPanel, TabPanels, Tabs, Text, VStack, chakra, useColorMode } from "@chakra-ui/react"
 import { useState } from "react"
 
-export interface ISettingsForm extends Partial<IUser>{
- 
+export interface ISettingsForm extends Partial<IUser> {
+
 }
 
 export default function Settings() {
@@ -36,7 +36,7 @@ export default function Settings() {
             <FormSwitch
               onChange={toggleColorMode}
               isChecked={colorMode === "dark"}
-              label={<Text fontSize="inherit">Color mode <Text display={"inline"} variant={"note"} fontSize="inherit">(light - dark)</Text></Text>}
+              label={<Text fontSize="inherit">Color mode <Text as={chakra.span} display={"inline"} variant={"note"} fontSize="inherit">(light - dark)</Text></Text>}
             />
           </VStack>
         </TabPanel>
