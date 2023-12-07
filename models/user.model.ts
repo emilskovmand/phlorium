@@ -73,5 +73,5 @@ const userSchema = new Schema<IUserDoc>(
 
 userSchema.plugin(formatDocument);
 
-export default mongoose.models.User ||
+export default (mongoose.models.User as mongoose.Model<IUserDoc>) ||
   mongoose.model<IUserDoc>("User", userSchema);

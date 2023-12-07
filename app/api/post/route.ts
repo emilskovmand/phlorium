@@ -45,3 +45,20 @@ export const POST = async (req: NextRequest) => {
         return new Response("Post could not be created", { status: 500 })
     }
 }
+
+export const GET = async (req: NextRequest) => {
+    await connect()
+
+    const username = req.nextUrl.searchParams.get("username")
+    const title = req.nextUrl.searchParams.get("title")
+    const userId = req.nextUrl.searchParams.get("userId")
+    const decals = req.nextUrl.searchParams.get("decals")
+    const page = req.nextUrl.searchParams.get("page") || "1"
+
+    const post = await postModel
+        .find()
+        .skip((parseInt(page) - 1) * 10)
+        .limit(10)
+
+    return Response.json([...post])
+}

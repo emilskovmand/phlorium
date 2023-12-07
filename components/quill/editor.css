@@ -1071,11 +1071,11 @@
 }
 
 .quill-dark .ql-toolbar.ql-snow {
-  background-color: var(--chakra-colors-black-900);
+  background-color: transparent;
 }
 
 .quill-light .ql-toolbar.ql-snow {
-  background-color: var(--chakra-colors-white-900);
+  background-color: transparent;
 }
 
 .ql-toolbar.ql-snow .ql-formats {
