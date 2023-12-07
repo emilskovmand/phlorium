@@ -17,7 +17,7 @@ export const UserMenu = ({ children }: IUserMenu) => {
     </MenuButton>
     <MenuList>
       <MenuGroup title="My user">
-        <MenuItem>Profile</MenuItem>
+        <NextLink href="/profile"><MenuItem>Profile</MenuItem></NextLink>
         <NextLink href="/settings"><MenuItem>User settings</MenuItem></NextLink>
         <MenuDivider />
         <MenuItem onClick={() => signOut({})}>Log out</MenuItem>
