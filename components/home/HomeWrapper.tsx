@@ -1,7 +1,6 @@
 "use client"
-import { IUser } from "@/interfaces/user.interface"
+import useApi from "@/hooks/useAPI"
 import { Box, HStack, chakra } from "@chakra-ui/react"
-import axios from "axios"
 import { Carousel, ICarouselItem } from "../Carousel"
 import { Postlist } from "../PostList"
 import { Welcome } from "./Welcome"
@@ -14,16 +13,7 @@ const items: ICarouselItem[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((v) => ({
 }))
 
 export const HomeWrapper = () => {
-    const getPosts = async () => {
-        try {
-            const data = await axios.get("/api/post")
-            console.log(data)
-        } catch (error) {
-            console.log("Error:", error)
-        }
-    }
-
-    getPosts()
+    const { data: postData } = useApi("/api/post", "GET")
 
     return (
         <chakra.main pl={"8"} pt="8" maxW="100%">
@@ -32,7 +22,7 @@ export const HomeWrapper = () => {
                 <Carousel items={items} />
             </Box>
             <HStack>
-                <Postlist flex="4" list={[{ decals: [], text: "Hejsa texten", title: "Titlen", user: { username: "Username", email: "username@gmail.com", _id: "" } as IUser }]} />
+                <Postlist flex="4" list={postData} />
                 <Box flex="3">Test</Box>
             </HStack>
         </chakra.main>

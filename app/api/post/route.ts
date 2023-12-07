@@ -1,7 +1,5 @@
-import { IPostFilter } from "@/interfaces/post.interface"
 import { connect } from "@/lib/db"
 import postModel from "@/models/post.model"
-import { NextApiRequest } from "next"
 import { getServerSession } from "next-auth"
 import { NextRequest } from "next/server"
 import { authOptions } from "../auth/[...nextauth]/route"
@@ -55,13 +53,12 @@ export const GET = async (req: NextRequest) => {
     const title = req.nextUrl.searchParams.get("title")
     const userId = req.nextUrl.searchParams.get("userId")
     const decals = req.nextUrl.searchParams.get("decals")
-    const page = req.nextUrl.searchParams.get("page")
+    const page = req.nextUrl.searchParams.get("page") || "1"
 
     const post = await postModel
-    .find()
-    .skip((page - 1) * 10)
-    .limit(10)
+        .find()
+        .skip((parseInt(page) - 1) * 10)
+        .limit(10)
 
-    return Response.json({ post })
-
+    return Response.json([...post])
 }
