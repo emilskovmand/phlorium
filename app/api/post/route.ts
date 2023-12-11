@@ -1,21 +1,11 @@
 import { connect } from "@/lib/db"
 import postModel from "@/models/post.model"
-import { getServerSession } from "next-auth"
 import { NextRequest } from "next/server"
-import { authOptions } from "../auth/[...nextauth]/route"
+import { getSession } from "@/lib/helpers/session"
 
 interface IAddPost {
     title: string
     text: string
-}
-
-const getSession = async () => {
-    const session: any = await getServerSession(authOptions)
-    let sessionId
-    if (session && session.user._id) {
-        sessionId = session.user._id
-    }
-    return sessionId
 }
 
 export const POST = async (req: NextRequest) => {
@@ -37,10 +27,9 @@ export const POST = async (req: NextRequest) => {
         user: session,
     })
 
-    const savedPost = await newPost.save()
 
     if (newPost) {
-        return new Response(savedPost, { status: 201 })
+        return new Response(newPost, { status: 201 })
     } else {
         return new Response("Post could not be created", { status: 500 })
     }
