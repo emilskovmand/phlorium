@@ -28,7 +28,7 @@ export default function Settings() {
             <FormSwitch
               onChange={toggleColorMode}
               isChecked={colorMode === "dark"}
-              label={<Text fontSize="inherit">Color mode <Text display={"inline"} variant={"note"} fontSize="inherit">(light - dark)</Text></Text>}
+              label={<Text fontSize="inherit">Color mode <Text as={chakra.span} display={"inline"} variant={"note"} fontSize="inherit">(light - dark)</Text></Text>}
             />
           </VStack>
         </TabPanel>
