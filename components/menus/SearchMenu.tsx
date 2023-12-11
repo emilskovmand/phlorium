@@ -36,7 +36,7 @@ export const SearchMenuList = ({ search, menuItems, children, ...rest }: ISearch
 
 export const SearchMenu = ({ searchContainer, searchContainerRef, menuButtonProps, children, ...rest }: ISearchMenu) => {
 
-  return <Menu placement={"bottom-start"} isLazy {...rest}>
+  return <Menu autoSelect={false} placement={"bottom-start"} isLazy {...rest}>
     <MenuButton w="100%" onClick={() => searchContainerRef.current?.focus()} as={Box} {...menuButtonProps}>
       {searchContainer}
     </MenuButton>

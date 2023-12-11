@@ -77,6 +77,7 @@ const components = {
       list: {
         bg: "white.900",
         zIndex: 20000,
+        transform: "none !important",
         rootProps: { top: "200px !important" },
         color: "black.900",
         _dark: {
