@@ -48,12 +48,17 @@ export const authOptions: AuthOptions = {
         })
     ],
     callbacks: {
-        async session({ session, token } : { session : any, token : any}) {
+        async session({ session, token }: { session: any, token: any }) {
             session.user = token.user as any
-            if ((session.user as any)?.provider === "google"){
-                const userDoc = await userModel.findOne({ "googleCredentials.googleEmail": session.user!!.email})
+
+            if ((session.user as any)?.provider === "google") {
+                const userDoc = await userModel.findOne({ "googleCredentials.googleEmail": session.user!!.email })
                 session.user!!._id = userDoc?._id?.toString()
             }
+
+            const userDoc = await userModel.findOne({ _id: session.user._id })
+            session.user.settings = userDoc?.settings
+
             return session
         },
         async jwt({ token, user, account }) {
