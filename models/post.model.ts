@@ -18,13 +18,13 @@ const postSchema = new Schema(
             {
                 type: Schema.Types.ObjectId,
                 index: true,
-                ref: "decals",
+                ref: "Decal",
             },
         ],
         user: {
             type: Schema.Types.ObjectId,
             index: true,
-            ref: "users",
+            ref: "User",
         },
     },
     {

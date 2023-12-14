@@ -75,11 +75,13 @@ const components = {
         }
       },
       list: {
-        bgColor: "white.900",
+        bg: "white.900",
         zIndex: 20000,
+        transform: "none !important",
+        rootProps: { top: "200px !important" },
         color: "black.900",
         _dark: {
-          bgColor: "black.900",
+          bg: "black.900",
           color: "white.900"
         }
       }
@@ -201,7 +203,7 @@ const components = {
     variants: {
       "searchbar": {
         field: {
-          borderRadius: "400px",
+          borderRadius: "28px",
           _light: {
             bgColor: "brand.700"
           },

@@ -1,6 +1,6 @@
-import { IUserDoc } from "@/interfaces/user.interface";
-import formatDocument from "@/lib/formatDocument";
-import mongoose, { Schema } from "mongoose";
+import { IUserDoc } from "@/interfaces/user.interface"
+import formatDocument from "@/lib/formatDocument"
+import mongoose, { Schema } from "mongoose"
 
 const userSchema = new Schema<IUserDoc>(
   {
@@ -69,9 +69,8 @@ const userSchema = new Schema<IUserDoc>(
   {
     timestamps: true,
   }
-);
+)
 
-userSchema.plugin(formatDocument);
+userSchema.plugin(formatDocument)
 
-export default (mongoose.models.User as mongoose.Model<IUserDoc>) ||
-  mongoose.model<IUserDoc>("User", userSchema);
+export default (mongoose.models.User as mongoose.Model<IUserDoc>) || mongoose.model<IUserDoc>("User", userSchema)

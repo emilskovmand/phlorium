@@ -14,9 +14,8 @@ export const PostDecal = ({ decal, ...rest }: IPostDecal) => {
     )
 }
 
-export const PostItem = ({ title, text, user }: IPost) => {
+export const PostItem = ({ title, text, user, decals }: IPost) => {
     const postedBy = user as IUser
-    console.log(user)
 
     return (
         <VStack gap="0px" alignItems={"flex-start"} borderRadius={"16px"} w="100%" minW="0" p="8" bgColor="brand.700" _dark={{ bgColor: "whiteAlpha.200" }} justifyContent={"flex-start"}>
@@ -31,8 +30,9 @@ export const PostItem = ({ title, text, user }: IPost) => {
                 <Text fontSize="14px" noOfLines={2} dangerouslySetInnerHTML={{ __html: text }} />
             </Box>
             <HStack>
-                <PostDecal decal="Coding" />
-                <PostDecal decal="Gaming" />
+                {decals.map((decal: any) => {
+                    return <PostDecal decal={decal.title} key={decal._id} />
+                })}
             </HStack>
         </VStack>
     )
