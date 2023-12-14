@@ -5,23 +5,12 @@ import decalModel from "@/models/decal.model"
 import postModel from "@/models/post.model"
 import userModel from "@/models/user.model"
 import { HydratedDocument } from "mongoose"
-import { getServerSession } from "next-auth"
 import { NextRequest } from "next/server"
 
 interface IAddPost {
     title: string
     text: string
     decals: string[]
-}
-
-// Get the session from the server of the authenticated user
-const getSession = async () => {
-    const session: any = await getServerSession(authOptions)
-    let sessionId
-    if (session && session.user._id) {
-        sessionId = session.user._id
-    }
-    return sessionId
 }
 
 // Create and add new post to database
