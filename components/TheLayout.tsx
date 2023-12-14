@@ -1,5 +1,7 @@
 'use client'
-import { Box, Flex, useColorModeValue } from "@chakra-ui/react"
+import { IUser } from "@/interfaces/user.interface"
+import { Box, Flex, useColorMode, useColorModeValue } from "@chakra-ui/react"
+import { useSession } from "next-auth/react"
 import { useState } from "react"
 import { Navigation } from "./Navigation"
 import { Sidebar } from "./Sidebar"
@@ -9,6 +11,15 @@ interface ITheLayout {
 }
 
 export const Thelayout = ({ children }: ITheLayout) => {
+
+  const {setColorMode} = useColorMode()
+  const { data } = useSession()
+  const user: IUser | undefined = data?.user as any
+
+  if (user && user.settings?.colormode) {
+    setColorMode(user?.settings?.colormode)
+  }
+
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 

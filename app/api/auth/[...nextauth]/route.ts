@@ -20,7 +20,7 @@ export const authOptions: AuthOptions = {
                 const userDoc = await userModel.findOne({ email: credentials?.email }).select("+password")
                 if (userDoc) {
                     const auth: any = new Promise((resolve, reject) => {
-                        bcrypt.compare(credentials?.password || "", userDoc.password, function (err, isSame) {
+                        bcrypt.compare(credentials?.password || "", userDoc.password || "", function (err, isSame) {
                             if (isSame) {
                                 // Info stored in session
                                 resolve({
@@ -48,8 +48,17 @@ export const authOptions: AuthOptions = {
         })
     ],
     callbacks: {
-        async session({ session, token }) {
+        async session({ session, token }: { session: any, token: any }) {
             session.user = token.user as any
+
+            if ((session.user as any)?.provider === "google") {
+                const userDoc = await userModel.findOne({ "googleCredentials.googleEmail": session.user!!.email })
+                session.user!!._id = userDoc?._id?.toString()
+            }
+
+            const userDoc = await userModel.findOne({ _id: session.user._id })
+            session.user.settings = userDoc?.settings
+
             return session
         },
         async jwt({ token, user, account }) {
